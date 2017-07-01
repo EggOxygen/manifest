@@ -32,7 +32,7 @@ Source Directory Structure:
 
 Use repo init with "-b" for download the branch you want
 
-Use repo sync for upgrade The latest code form flyme git
+Use repo sync to upgrade to the latest code from flyme git
 
     $ repo init -u https://github.com/FlymeOS/manifest.git -b marshmallow-6.0
     $ repo sync -c -j4
@@ -69,6 +69,7 @@ then follow the Step for build a full flyme patchrom :
 <b>* Resolve conflicts</b>
 
 Automatic Patching may cause some reject Conflict. Each Conflict will be display like this.
+
 Developer have to fix these Conflicts by own.
 
 
@@ -106,4 +107,4 @@ We encourage developers to contribute to flyme open source. Using Github`s Pull-
 - <p><a href="mailto:zoujunhua86@gmail.com">zoujunhua86@gmail.com</a></p> (Gmail)
 
 
-# Test Translate / May Have some Grammar error 
+# UNOFFICIAL Translate / May Have some Grammar error 
