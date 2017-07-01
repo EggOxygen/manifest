@@ -1,41 +1,42 @@
-# 1. 介绍
+# 1. Introduction
 
-`FlymeOS`开源项目致力于为开发者提供业界一流的ROM适配工具。
+`FlymeOS` Flyme Patchrom -- providing developers with industry-leading Patchrom tools
 
-二零一五年六月三十日，`FlymeOS`开放适配终于来了，我们相信虽晚未迟。
+June 30, 2015,`FlymeOS` Patchrom Finally Released.
 
 [![License](https://img.shields.io/badge/License-Apache%20V2.0-blue.svg)](LICENSE)
 
 
-# 2. 分支命名
+# 2. Branch
 
-开源项目的分支命名与Android版本对应,目前支持**Android 6.0**的机型适配，分支名为：`marshmallow-6.0`
+Now Flyme6 Only Support **Android 6.0** and Corresponding branch is `marshmallow-6.0`
 
-目录结构如下所示: 
+
+Directory Structure: 
 
     FlymeOS
-     +-- manifest           项目清单
-     +-- tutorials          教程文档
-     +-- plugins            扩展插件，用于扩展已有功能
-     +-- build              编译环境，用于构建和编译机型
-     +-- tools              适配工具
-     +-- flyme              Flyme相关，内容定期更新
-          +-- release       官方发布的ROM包
-          +-- overlay       资源覆盖
-     +-- devices            机型目录
-          +-- base          官方提供的默认机型
-          +-- your_device   待开发者适配的机型
+     +-- manifest           List of projects
+     +-- tutorials          Tutorial documentation
+     +-- plugins            Extensions for extending existing functionality
+     +-- build              Compiler Environment , Used to build and compile rom
+     +-- tools              Patch tool
+     +-- flyme              Flyme related, content is updated regularly
+          +-- release       ROM Package By Flyme Official
+          +-- overlay       Overlay
+     +-- devices            Devices directory
+          +-- base          Official default Device
+          +-- your_device   Your Devices Base
 
 
-# 3. 代码下载
+# 3. Code download
 
-通过repo init命令的-b参数, 选择需要下载的分支。
-通过repo sync命令同步远程代码: 
+Use repo init with "-b" for download the branch you want
+Use repo sync for upgrade The latest code form flyme git
 
     $ repo init -u https://github.com/FlymeOS/manifest.git -b marshmallow-6.0
     $ repo sync -c -j4
 
-如果连接一直失败或下载代码过慢，则使用以下命令:
+If the connection has failed or the download code is too slow, use the following command:
 
     $ repo init --repo-url git://github.com/FlymeOS/repo.git \
                 -u https://github.com/FlymeOS/manifest.git \
@@ -43,64 +44,65 @@
     $ repo sync --no-clone-bundle -c -j4
 
 
-# 4. 机型适配
+# 4. Port to your Device
 
-<b>* 标准流程</b>
+<b>* Standard procedure</b>
 
-下载完代码以后, 在开源项目根目录, 执行以下命令初始化开发环境: 
+After downloading the code, Execute the following command to initialize the development environment
 
     $ source build/envsetup.sh
 
-创建一个新的机型工程的目录(以demo为例), 后续的移植都在机型目录完成。
+Create a new device(E.g demo), ROM will Build in this directory
 
     $ mkdir -p devices/demo
     $ cd devices/demo
 
-按照如下步骤，完成一个新机型的适配：
+then follow the Step for build a full flyme patchrom :
 
-    $ flyme config      # 生成机型配置文件Makefile
-    $ flyme newproject  # 生成新机型目录
-    $ flyme patchall    # 自动插桩
-    $ flyme fullota     # 生成适配完成的ROM包
+    $ flyme config      # Generate device config file - Makefile
+    $ flyme newproject  # Generate new device directory (will pull vendor form your phone)
+    $ flyme patchall    # Automatic Patching
+    $ flyme fullota     # Generate Your own Flyme ROM Package
 
 
-<b>* 冲突处理</b>
+<b>* Conflict</b>
 
-自动插桩可能会造成代码合并冲突。冲突会以下面的形式标注出来, 开发者需要在厂商的文件中手工解决这些冲突。
+Automatic Patching may cause some reject Conflict. Each Conflict will be display like this.
+Developer have to fix these Conflicts by hand.
+
 
     <<<<<<< VENDOR
-      原厂的代码块
+      Vendor Code
     =======
-      Flyme的代码块
+      Flyme Code
     >>>>>>> BOSP
 
 
-<b>* 版本升级</b>
+<b>* Version Upgrade</b>
 
-可以跟随官方发布的最新ROM包，将已经是适配完成的机型升级到最新版本：
+You can upgrade your device code like this (No Need to do patchall every time)
 
     $ flyme cleanall
     $ flyme upgrade
 
 
-# 5. 贡献代码
+# 5. Contribution code
 
-我们鼓励开发者为开源社区作出贡献。利用Github的Pull-Request机制，便可将内容变更发送给Flyme官方审阅。
+We encourage developers to contribute to flyme open source. Using Github`s Pull-Request，Then you can send your code to official
 
 ![image](github-pull-request.png)
 
-- 首先，在github页面上，点击“Fork”，将Flyme的git库拷贝到自己账户
-- 然后，对拷贝的git库进行修改，将内容变更提交到自己的账户
-- 最后，在github页面上，点击"New pull request"，向Flyme官方发起代码审阅
+- First,Click 'Fork', Fork the source to your github
+- Then,Change or Add the Code Form your Github && Commit
+- At Last , Click "New pull request" at the Github Page, For Sending a Pull Request to Flyme Official
 
 
-# 6. 其他
+# 6. Other
 
-<b>* 问题求助与反馈</b>
+<b>* Ask For Help && Feedback</b>
 
-- <p><a href="mailto:446108651@qq.com">446108651@qq.com</a></p>
-- <p><a href="mailto:zoujunhua86@gmail.com">zoujunhua86@gmail.com</a></p>
+- <p><a href="mailto:446108651@qq.com">446108651@qq.com</a></p> (QQ Mail)
+- <p><a href="mailto:zoujunhua86@gmail.com">zoujunhua86@gmail.com</a></p> (Gmail)
 
-<b>* 已适配机型展示与下载</b>
 
-- <http://www.flyme.cn/firmware.html>
+#Test Translate / May Have some Grammar error 
